@@ -51,6 +51,7 @@ function displayBugsSum() {
         ticket.innerHTML =`
         ${bug.summary} | ${bug.identifiedBy} | ${bug.project} | ${bug.assignedTo} | ${bug.priority} | ${bug.status} | ${bug.dateIdentified} | ${bug.targetDate}
         `;
+        container.appendChild(ticket);
     });
 };
 //Display ALL of ticket
