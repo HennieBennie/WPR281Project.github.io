@@ -1,5 +1,5 @@
 let issues = JSON.parse(localStorage.getItem("issues")) || [];
-localStorage.setItem("issues", JSON.stringify(issues));
+
 
 if (issues.length === 0) {
     issues = [
@@ -16,10 +16,7 @@ if (issues.length === 0) {
 function showBugForm() {
 
 };
-//save to tickets(ppl and projects not included)
-function saveBug() {
 
-};
 //save info to ticket
 function saveBug() {
     let newBug ={id: Date.now(),
@@ -42,7 +39,7 @@ function saveBug() {
 }
 //display summary of ticket
 function displayBugsSum() {
-    let container = document.getElementById("all");
+    let container = document.getElementById("All");
     container.innerHTML = "";
 
     issues.forEach(bug => {
@@ -62,7 +59,7 @@ function saveEdit() {};
 // Display tickets by page
 
 function generateItem(summary, description, identifiedBy, project, assignedTo, priority, status, dateIdentified, targetDate) {
-        const item = document.createElement("div");
+        const newDiv = document.createElement("div");
         newDiv.id = 'myDiv';
         newDiv.className = 'highlight';
         newDiv.innerHTML = 'Hello, I am a dynamically created div!';
@@ -105,3 +102,8 @@ function openTab(evt, tabName) {
 }
 
 document.getElementById("defaultOpen").click();
+
+window.onload = function () {
+    displayBugsSum();
+    document.getElementById("defaultOpen").click();
+};
