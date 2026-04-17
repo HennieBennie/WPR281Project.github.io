@@ -3,10 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>WPR 281 Project</title>
+    <link rel="stylesheet" href="styling.css">
+    <script src="scripts.js" defer></script>
 </head>
 <body>
-    Hello World!
-    Gavin stink
+
+    <div class="Header">
+        <div class="HeaderTitle">
+            <h1>WPR 281 Project</h1>
+        </div>
+        <div>
+            <button class="HeaderButton">Create New Ticket</button>
+        </div>
+    </div>
+
+    <div>
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'All')" id="defaultOpen">All</button>
+            <button class="tablinks" onclick="openTab(event, 'High')">High Priority</button>
+            <button class="tablinks" onclick="openTab(event, 'Low')">Low Priority</button>
+            <button class="tablinks" onclick="openTab(event, 'InProgress')">In Progress</button>
+            <button class="tablinks" onclick="openTab(event, 'Resolved')" id="ResolvedTab">Resolved</button>
+        </div>
+
+        <!-- Tab content -->
+        <div id="All" class="tabcontent">
+            <h3>AA</h3>
+            <p>aa</p>
+        </div>
+
+        <div id="High" class="tabcontent">
+            <h3>AA</h3>
+            <p>aa</p>
+        </div>
+
+        <div id="Low" class="tabcontent">
+            <h3>AA</h3>
+            <p>aa</p>
+        </div> 
+
+        <div id="InProgress" class="tabcontent">
+            <h3>AA</h3>
+            <p>aa</p>
+        </div>  
+
+        <div id="Resolved" class="tabcontent">
+            <h3>AA</h3>
+            <p>aa</p>
+        </div>  
+    </div>
+
 </body>
 </html>
