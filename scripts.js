@@ -102,8 +102,7 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
-document.getElementById("defaultOpen").click();
-
+//check as jy met die saamstem
 window.onload = function () {
     displayBugsSum();
     document.getElementById("defaultOpen").click();
