@@ -39,7 +39,7 @@ function saveBug() {
 }
 //display summary of ticket
 function displayBugsSum() {
-    let container = document.getElementById("All");
+    let container = document.getElementById("bugList");
     container.innerHTML = "";
 
     issues.forEach(bug => {
