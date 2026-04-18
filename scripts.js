@@ -1,5 +1,18 @@
 let issues = JSON.parse(localStorage.getItem("issues")) || [];
-
+/*
+info wat gesave moet word:
+id
+summary
+status
+description
+identified by
+assigned to(person id, person email, person username, person name, person surname)
+project(project id, project name)
+entry date
+target date
+resolved date 
+profile pic of person?
+ */
 if (issues.length === 0) {
     issues = [
         {
@@ -11,10 +24,7 @@ if (issues.length === 0) {
     ];
     localStorage.setItem("issues", JSON.stringify(issues));
 }
-//Form to insert data
-function showBugForm() {
 
-};
 
 //save info to ticket
 function saveBug() {
@@ -66,8 +76,7 @@ function displayBugsSum() {
 function displayDetail(id) {
   window.location.href = `BugDetails.html?id=${id}`;  
 };
-//save to ticket
-function saveEdit() {};
+
 
 // Display tickets by page
 ////moet ek die displayBugsSum function hier insit?
