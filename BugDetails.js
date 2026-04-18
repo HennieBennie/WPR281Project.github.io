@@ -142,9 +142,9 @@ function saveResolution(id) {
     let bug = issues.find(b => b.id === id);
     bug.resolutionSummary = document.getElementById(`resolveSummary-${id}`).value;
     bug.resolutionDate = document.getElementById(`resolvedDate-${id}`).value;
-    bug.status = "resolved"
+    bug.status = "resolved" 
     localStorage.setItem("issues", JSON.stringify(issues));
     location.reload();
    
-
+    history.back();
 };
