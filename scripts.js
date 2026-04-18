@@ -18,8 +18,21 @@ if (issues.length === 0) {
         {
             id: 1,
             summary: "Example Bug",
+            description: "Example description",
             status: "open",
-            priority: "high"
+            priority: "high",
+            identifiedBy: "Admin",
+            personID: "1",
+            personName: "John",
+            personSurname: "Doe",
+            personEmail: "john@email.com",
+            personUsername: "jdoe",
+            projectID: "101",
+            projectName: "Bug Tracker",
+            entryDate: new Date().toISOString(),
+            targetDate: "2026-04-20",
+            resolutionDate: null,
+            resolutionSummary: ""
         }
     ];
     localStorage.setItem("issues", JSON.stringify(issues));
@@ -28,23 +41,28 @@ if (issues.length === 0) {
 
 //save info to ticket
 function saveBug() {
-    let newBug ={id: Date.now(),
-    summary: document.getElementById("summary").value,
-    description: document.getElementById("description").value,
-    identifiedBy: document.getElementById("person").value,
-    project: document.getElementById("project").value,
-    assignedTo: document.getElementById("assignedTo").value,
-    priority: document.getElementById("priority").value,
-    status: "open",
-    dateIdentified: new Date().toISOString(),
-    targetDate: document.getElementById("targetDate").value,
-    resolvedDate: null,
-    resolutionSummary: ""
+    let newBug ={
+        id:  document.getElementById("ID").value,
+        summary: document.getElementById("summary").value,
+        description: document.getElementById("description").value,
+        identifiedBy: document.getElementById("person").value,
+        personID: document.getElementById("personID").value,
+        personName: document.getElementById("personName").value,
+        personSurname: document.getElementById("personSurname").value,
+        personEmail: document.getElementById("personEmail").value,
+        personUsername: document.getElementById("personUsername").value,
+         projectID: document.getElementById("projectID").value,
+        projectName: document.getElementById("projectName").value,
+        priority: document.getElementById("priority").value,
+        status: "open",
+        entryDate: new Date().toISOString(),
+        targetDate: document.getElementById("targetDate").value,
+        resolutionDate: null,
+        resolutionSummary: ""
     };
     issues.push(newBug);
     localStorage.setItem("issues", JSON.stringify(issues));
-
-    
+    location.reload();
 }
 //display summary of ticket
 function displayBugsSum() {
@@ -55,19 +73,32 @@ function displayBugsSum() {
         let ticket = document.createElement("div");
 
         ticket.innerHTML =`
-        <div class="tabgrid" id="bugList">
-                <div class="summaryDiv">${bug.summary}</div>
-                <div class="descriptionDiv">${bug.description}</div>
-                <div class="personDiv">${bug.identifiedBy}</div>
-                <div class="projectDiv">${bug.project}</div>
-                <div class="assignedToDiv">${bug.assignedTo}</div>
-                <div class="priorityDiv">${bug.priority}</div>
-                <div class="targetDateDiv">${bug.targetDate}</div>
-                <div class="statusDiv">${bug.status}</div>
-                <div class="dateIdentifiedDiv">${bug.dateIdentified}</div>
-                <div>
-                    <button class="button" onclick="displayDetail(${bug.id})">View Bug</button>
-                </div>
+         <div class="tabgrid">
+
+            <div class="summaryDiv">${bug.summary}</div>
+            <div class="descriptionDiv">${bug.description}</div>
+
+            <div class="personDiv">${bug.identifiedBy}</div>
+
+            <div class="projectDiv">${bug.projectName}</div>
+
+            <div class="assignedToDiv">
+                ${bug.personName} ${bug.personSurname}
+            </div>
+
+            <div class="priorityDiv">${bug.priority}</div>
+            <div class="statusDiv">${bug.status}</div>
+
+            <div class="dateIdentifiedDiv">
+                ${bug.entryDate?.split("T")[0]}
+            </div>
+
+            <div class="targetDateDiv">${bug.targetDate}</div>
+
+            <div>
+                <button class="button" onclick="displayDetail(${bug.id})">View Bug</button>
+            </div>
+
         </div>`;
         container.appendChild(ticket);
     });
