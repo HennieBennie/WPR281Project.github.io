@@ -1,3 +1,4 @@
+console.log("Loaded");
 let issues = JSON.parse(localStorage.getItem("issues")) || [];
 
 let link = new URLSearchParams(window.location.search);
