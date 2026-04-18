@@ -28,8 +28,14 @@ if (issues.length === 0) {
 
 //save info to ticket
 function saveBug() {
-    let newBug ={
-        id:  document.getElementById("ID").value,
+    // Generate a new ID based on the highest existing ID
+    let newId = 1;
+    if (issues.length > 0) {
+        newId = Math.max(...issues.map(bug => bug.id)) + 1;
+    }
+
+    let newBug = {
+        id: newId,
         summary: document.getElementById("summary").value,
         description: document.getElementById("description").value,
         identifiedBy: document.getElementById("person").value,
@@ -38,7 +44,7 @@ function saveBug() {
         personSurname: document.getElementById("personSurname").value,
         personEmail: document.getElementById("personEmail").value,
         personUsername: document.getElementById("personUsername").value,
-         projectID: document.getElementById("projectID").value,
+        projectID: document.getElementById("projectID").value,
         projectName: document.getElementById("projectName").value,
         priority: document.getElementById("priority").value,
         status: "open",
@@ -49,7 +55,10 @@ function saveBug() {
     };
     issues.push(newBug);
     localStorage.setItem("issues", JSON.stringify(issues));
-    location.reload();
+    
+    // Show confirmation popup and redirect
+    window.location.href = "index.html";
+    alert("Ticket created successfully!");
 }
 
 //display summary of ticket
@@ -135,7 +144,7 @@ function displayBugsSum(tabName) {
 
             <div class="personDiv">${bug.identifiedBy}</div>
 
-            <div class="projectDiv">${bug.projectName}</div>
+            <div class="projectDiv">${bug.projectID} - ${bug.projectName}</div>
 
             <div class="assignedToDiv">
                 ${bug.personName} ${bug.personSurname}
