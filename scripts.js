@@ -53,14 +53,13 @@ function displayBugsSum() {
 };
 //Display ALL of ticket
 function displayDetail(id) {
-  window.location.href = `BugDetails.html`;  
+  window.location.href = `BugDetails.html?id=${id}`;  
 };
 //save to ticket
 function saveEdit() {};
 
 // Display tickets by page
 //moet ek die displayBugsSum function hier insit?
-
 function generateItem(summary, description, identifiedBy, project, assignedTo, priority, status, dateIdentified, targetDate) {
         const newDiv = document.createElement("div");
         newDiv.id = 'myDiv';
