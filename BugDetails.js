@@ -42,8 +42,8 @@ if(bug) {
     <p>${bug.projectName}</p>
     <p>Date identified:${bug.entryDate}</p>
     <p>Target date:${bug.targetDate}</p>
-    <button onclick=EditDetails(${bug.id})>Edit</button>
-    <button onClick=ResolveIssue(${bug.id})>Resolve</button>
+    <button class="button" onclick="EditDetails(${bug.id})">Edit</button>
+    <button class="button" onclick="ResolveIssue(${bug.id})">Resolve</button>
     `;} else {
         container.innerHTML = "<p>Bug not found</p>";
     };
@@ -80,7 +80,7 @@ function EditDetails(id) {
     <input id="entryDate-${id}" type="date" value="${bug.entryDate?.split("T")[0]}"><br>
     <input id="targetDate-${id}" type="date" value="${bug.targetDate?.split("T")[0]}"><br>
 
-    <button onclick="saveEdit(${id})">Save</button>
+    <button class="button" onclick="saveEdit(${id})">Save</button>
     `;  
     
 };
@@ -90,7 +90,7 @@ function ResolveIssue(id) {
     resolveContainer.innerHTML = `
     <input id="resolveSummary-${id}" placeholder="Resolution summary" value=""><br>
     <input id="resolvedDate-${id}" type="date" value=""><br> 
-    <button onclick="saveResolution(${id})">Save</button>   
+    <button class="button" onclick="saveResolution(${id})">Save</button>   
     `;
 
 };

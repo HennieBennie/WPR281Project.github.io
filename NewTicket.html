@@ -9,7 +9,10 @@
     <script src="scripts.js" defer></script>
 </head>
 <body>
-    <h3>Create New Ticket</h3>
+    <div class="Header">
+        <h3>Create New Ticket</h3>
+        <button id="backButton" class="button" onclick="history.back()">Go Back</button>
+    </div> 
     <div>
         <form id="newTicketForm" class="Form">
             <div class="summaryDiv">
@@ -46,9 +49,6 @@
             </div>
             <div class="submitDiv">
                 <button type="submit" class="button" onclick="saveBug()">Create Ticket</button>
-            </div>
-            <div class="goBackDiv">
-                <button id="backButton" class="button" onclick="location.href='index.html'">Go Back</button>
             </div>
         </form>
     </div>
