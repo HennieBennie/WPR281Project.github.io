@@ -1,18 +1,5 @@
 let issues = JSON.parse(localStorage.getItem("issues")) || [];
-/*
-info wat gesave moet word:
-id
-summary
-status
-description
-identified by
-assigned to(person id, person email, person username, person name, person surname)
-project(project id, project name)
-entry date
-target date
-resolved date 
-profile pic of person?
- */
+
 if (issues.length === 0) {
     issues = [
         {
@@ -64,15 +51,83 @@ function saveBug() {
     localStorage.setItem("issues", JSON.stringify(issues));
     location.reload();
 }
+
 //display summary of ticket
-function displayBugsSum() {
-    let container = document.getElementById("bugList");
+function displayDetail(id) {
+if (!id) return;
+  window.location.href = `BugDetails.html?id=${id}`;  
+};
+
+
+// Tab functionality
+
+function openTab(evt, tabName) {
+    // Hide all tab content
+    const tabcontent = document.getElementsByClassName("tabcontent");
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+        tabcontent[i].classList.remove("active");
+    }
+
+    // Remove active class from all buttons
+    const tablinks = document.getElementsByClassName("tablinks");
+    for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the selected tab and mark button as active
+    const selectedTab = document.getElementById(tabName);
+    selectedTab.style.display = "block";
+    selectedTab.classList.add("active");
+    evt.currentTarget.className += " active";
+
+    // Filter and display bugs based on the selected tab
+    displayBugsSum(tabName);
+}
+
+// Display bugs filtered by tab
+function displayBugsSum(tabName) {
+    // Determine which container and filter to use
+    let containerId = "bugList";
+    let filterFn = (bug) => !bug.status || bug.status.toLowerCase() !== "resolved"; // Default: show all (excluding resolved)
+
+    if (tabName === "High") {
+        containerId = "High";
+        filterFn = (bug) => bug.priority && bug.priority.toLowerCase() === "high" && (!bug.status || bug.status.toLowerCase() !== "resolved");
+    } else if (tabName === "Low") {
+        containerId = "Low";
+        filterFn = (bug) => bug.priority && bug.priority.toLowerCase() === "low" && (!bug.status || bug.status.toLowerCase() !== "resolved");
+    } else if (tabName === "InProgress") {
+        containerId = "InProgress";
+        filterFn = (bug) => bug.status && bug.status.toLowerCase() === "in progress";
+    } else if (tabName === "Resolved") {
+        containerId = "Resolved";
+        filterFn = (bug) => bug.status && bug.status.toLowerCase() === "resolved";
+    }
+
+    let container = document.getElementById(containerId);
     container.innerHTML = "";
 
-    issues.forEach(bug => {
+    // Add header row
+    const header = document.createElement("div");
+    header.className = "tabgrid";
+    header.innerHTML = `
+        <div class="hasBorder">Summary</div>
+        <div class="hasBorder">Description</div>
+        <div class="hasBorder">Identified By</div>
+        <div class="hasBorder">Project</div>
+        <div class="hasBorder">Assigned To</div>
+        <div class="hasBorder">Priority</div>
+        <div class="hasBorder">Status</div>
+        <div class="hasBorder">Date Identified</div>
+        <div class="hasBorder">Target Date</div>
+    `;
+    container.appendChild(header);
+
+    issues.filter(filterFn).forEach(bug => {
         let ticket = document.createElement("div");
 
-        ticket.innerHTML =`
+        ticket.innerHTML = `
          <div class="tabgrid">
 
             <div class="summaryDiv">${bug.summary}</div>
@@ -103,60 +158,9 @@ function displayBugsSum() {
         container.appendChild(ticket);
     });
 };
-//Display ALL of ticket
-function displayDetail(id) {
-  window.location.href = `BugDetails.html?id=${id}`;  
-};
 
 
-// Display tickets by page
-////moet ek die displayBugsSum function hier insit?
-//As dit werk kan dit die kode dalk mooier maak, maar as jy te veel sukkel is dit nie nodig nie.
-function generateItem(summary, description, identifiedBy, project, assignedTo, priority, status, dateIdentified, targetDate) {
-        const newDiv = document.createElement("div");
-        newDiv.id = 'myDiv';
-        newDiv.className = 'highlight';
-        newDiv.innerHTML = 'Hello, I am a dynamically created div!';
-
-        // Apply some inline styles
-        newDiv.style.width = '200px';
-        newDiv.style.height = '50px';
-        newDiv.style.backgroundColor = 'skyblue';
-        newDiv.style.textAlign = 'center';
-        newDiv.style.lineHeight = '50px';
-        newDiv.style.fontWeight = 'bold';
-
-    newDiv.addEventListener('click', () => {
-        alert('Clicked');
-
-    });
-    document.body.appendChild(newDiv);    
-    
-    
-}
-
-// Tab functionality
-
-function openTab(evt, tabName) {
-    // Hide all tab content
-    const tabcontent = document.getElementsByClassName("tabcontent");
-    for (let i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Remove active class from all buttons
-    const tablinks = document.getElementsByClassName("tablinks");
-    for (let i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the selected tab and mark button as active
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-//check as jy met die saamstem
 window.onload = function () {
-    displayBugsSum();
+    displayBugsSum("All");
     document.getElementById("defaultOpen").click();
 };

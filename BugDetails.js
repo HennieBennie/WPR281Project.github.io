@@ -1,20 +1,3 @@
-/*
-info wat gesave moet word:
-id
-summary
-status
-description
-identified by
-assigned to(person id, person email, person username, person name, person surname)
-project(project id, project name)
-priority
-entry date
-target date
-resolved date 
-resolution summary
-profile pic of person?
- */
-console.log("Loaded");
 let issues = JSON.parse(localStorage.getItem("issues")) || [];
 
 let link = new URLSearchParams(window.location.search);
@@ -51,36 +34,77 @@ function EditDetails(id) {
     let EditContainer = document.getElementById("bugDetails");
     let bug = issues.find(b => b.id === id);
     EditContainer.innerHTML = `
-    <input id="summary-${id}" placeholder="summary" value="${bug.summary}"><br>
-    <input id="description-${id}" placeholder="description" value="${bug.description}"><br>
-    <input id="person-${id}" placeholder="Identified by" value="${bug.identifiedBy}"><br>
+    <div class="editForm">
+        <div class="div1">
+            <p class="form-label">Summary:</p>
+            <input id="summary-${id}" placeholder="summary" value="${bug.summary}">
+        </div>
 
-    <select id="status-${id}">
-        <option value="open">Open</option>
-        <option value="resolved">Resolved</option>
-        <option value="overdue">Overdue</option>
-    </select>
+        <div class="div2">
+            <p class="form-label">Description:</p>
+            <textarea id="description-${id}" placeholder="description">${bug.description}</textarea>
+        </div>
 
-    <p>Project details:</p>
-    <input id="projectID-${id}" placeholder="project ID" value="${bug.projectID}"><br>
-    <input id="projectName-${id}" placeholder="project name" value="${bug.projectName}"><br>
+        <div class="div3">
+            <p class="form-label">Identified by:</p>
+            <input id="person-${id}" placeholder="Identified by" value="${bug.identifiedBy}"><br>
+        </div>
 
-    <select id="priority-${id}">
-      <option value="low" ${bug.priority === "low" ? "selected" : ""}>Low</option>
-      <option value="medium" ${bug.priority === "medium" ? "selected" : ""}>Medium</option>
-      <option value="high" ${bug.priority === "high" ? "selected" : ""}>High</option>
-    </select><br>
+        <div class="div4">
+            <p class="form-label">Status:</p>
+            <select id="status-${id}">
+                <option value="open">Open</option>
+                <option value="in progress">In Progress</option>
+                <option value="resolved">Resolved</option>
+                <option value="overdue">Overdue</option>
+            </select>
+        </div>
 
-    <p>Assigned to:</p>
-    <input id="personName-${id}" placeholder="Name" value="${bug.personName}"><br>
-    <input id="personSurname-${id}" placeholder="Name" value="${bug.personSurname}"><br>
-    <input id="personID-${id}" placeholder="Name" value="${bug.personID}"><br>
-    <input id="personEmail-${id}" placeholder="Name" value="${bug.personEmail}"><br>
-    <input id="personUsername-${id}" placeholder="Name" value="${bug.personUsername}"><br>
-    <input id="entryDate-${id}" type="date" value="${bug.entryDate?.split("T")[0]}"><br>
-    <input id="targetDate-${id}" type="date" value="${bug.targetDate?.split("T")[0]}"><br>
+        <div class="div5">
+            <p class="form-label">Project details:</p>
+            <p>Project ID:</p>
+            <input id="projectID-${id}" placeholder="project ID" value="${bug.projectID}">
+            <p>Project name:</p>
+            <input id="projectName-${id}" placeholder="project name" value="${bug.projectName}">
+        </div>
 
-    <button class="button" onclick="saveEdit(${id})">Save</button>
+        <div class="div6">
+            <p class="form-label">Priority:</p>
+            <select id="priority-${id}">
+                <option value="low" ${bug.priority === "low" ? "selected" : ""}>Low</option>
+                <option value="medium" ${bug.priority === "medium" ? "selected" : ""}>Medium</option>
+                <option value="high" ${bug.priority === "high" ? "selected" : ""}>High</option>
+            </select>
+        </div>
+
+        <div class="div7">
+            <p class="form-label">Assigned to:</p>
+            <p class="form-label">Name:</p>
+            <input id="personName-${id}" placeholder="Name" value="${bug.personName}"><br>
+            <p class="form-label">Surname:</p>
+            <input id="personSurname-${id}" placeholder="Name" value="${bug.personSurname}"><br>
+            <p class="form-label">Person ID:</p>
+            <input id="personID-${id}" placeholder="Name" value="${bug.personID}"><br>
+            <p class="form-label">Email:</p>
+            <input id="personEmail-${id}" placeholder="Email" value="${bug.personEmail}"><br>
+            <p class="form-label">Username:</p>
+            <input id="personUsername-${id}" placeholder="Username" value="${bug.personUsername}"><br>
+        </div>
+
+        <div class="div8">
+            <p class="form-label">Entry Date:</p>
+            <input id="entryDate-${id}" type="date" value="${bug.entryDate?.split("T")[0]}"><br>
+        </div>
+
+        <div class="div9">
+            <p class="form-label" >Target Date:</p>
+            <input id="targetDate-${id}" type="date" value="${bug.targetDate?.split("T")[0]}"><br>
+        </div>
+
+        <div class="div10">
+            <button class="button" onclick="saveEdit(${id})">Save</button>
+        </div>
+    </div>
     `;  
     
 };
