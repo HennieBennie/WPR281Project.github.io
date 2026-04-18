@@ -144,8 +144,7 @@ function saveResolution(id) {
     bug.resolutionDate = document.getElementById(`resolvedDate-${id}`).value;
     bug.status = "resolved" 
     localStorage.setItem("issues", JSON.stringify(issues));
-    location.reload();
    
     history.back();
-    refresh();
+    location.reload(true);
 };
