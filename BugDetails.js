@@ -16,6 +16,7 @@ if(bug) {
     <p>Project:${bug.project}</p>
     <p>Status:${bug.status}</p>
     <p>Target date:${bug.targetDate}</p>
-    `
+    `;} else {
+        container.innerHTML = "<p>Bug not found</p>";
+    }
 
-}
