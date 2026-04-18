@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styling.css">
+    <link rel="stylesheet" href="TicketStyling.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <h3>Create New Ticket</h3>
+    <div>
+        <form id="newTicketForm" class="Form">
+            <div class="summaryDiv">
+                <label for="summary">Summary:</label>
+                <input type="text" id="summary" required>
+            </div>
+            <div class="descriptionDiv">
+                <label for="description">Description:</label>
+                <textarea id="description" required></textarea>
+            </div>
+            <div class="personDiv">
+                <label for="person">Identified By:</label>
+                <input type="text" id="person" required>
+            </div>
+            <div class="projectDiv">
+                <label for="project">Project:</label>
+                <input type="text" id="project" required>
+            </div>
+            <div class="assignedToDiv">
+                <label for="assignedTo">Assigned To:</label>
+                <input type="text" id="assignedTo" required>
+            </div>
+            <div class="priorityDiv">
+                <label for="priority">Priority:</label>
+                <select id="priority" required>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="targetDateDiv">
+                <label for="targetDate">Target Date:</label>
+                <input type="date" id="targetDate" required>
+            </div>
+            <div class="submitDiv">
+                <button type="submit" class="button" onclick="saveBug()">Create Ticket</button>
+            </div>
+            <div class="goBackDiv">
+                <button id="backButton" class="button" onclick="location.href='index.html'">Go Back</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

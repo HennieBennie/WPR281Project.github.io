@@ -1,6 +1,5 @@
 let issues = JSON.parse(localStorage.getItem("issues")) || [];
 
-
 if (issues.length === 0) {
     issues = [
         {
@@ -46,8 +45,20 @@ function displayBugsSum() {
         let ticket = document.createElement("div");
 
         ticket.innerHTML =`
-        ${bug.summary} | ${bug.identifiedBy} | ${bug.project} | ${bug.assignedTo} | ${bug.priority} | ${bug.status} | ${bug.dateIdentified} | ${bug.targetDate} | <button onclick="displayDetail(${bug.id})">View Bug</button>
-        `;
+        <div class="tabgrid" id="bugList">
+                <div class="summaryDiv">${bug.summary}</div>
+                <div class="descriptionDiv">${bug.description}</div>
+                <div class="personDiv">${bug.identifiedBy}</div>
+                <div class="projectDiv">${bug.project}</div>
+                <div class="assignedToDiv">${bug.assignedTo}</div>
+                <div class="priorityDiv">${bug.priority}</div>
+                <div class="targetDateDiv">${bug.targetDate}</div>
+                <div class="statusDiv">${bug.status}</div>
+                <div class="dateIdentifiedDiv">${bug.dateIdentified}</div>
+                <div>
+                    <button class="button" onclick="displayDetail(${bug.id})">View Bug</button>
+                </div>
+        </div>`;
         container.appendChild(ticket);
     });
 };
@@ -59,7 +70,8 @@ function displayDetail(id) {
 function saveEdit() {};
 
 // Display tickets by page
-//moet ek die displayBugsSum function hier insit?
+////moet ek die displayBugsSum function hier insit?
+//As dit werk kan dit die kode dalk mooier maak, maar as jy te veel sukkel is dit nie nodig nie.
 function generateItem(summary, description, identifiedBy, project, assignedTo, priority, status, dateIdentified, targetDate) {
         const newDiv = document.createElement("div");
         newDiv.id = 'myDiv';

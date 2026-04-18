@@ -1,0 +1,63 @@
+.Form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+}
+    
+/* 1 */
+.summaryDiv {
+    grid-column: span 2 / span 2;
+}
+
+/* 2 */
+.descriptionDiv {
+    grid-column: span 2 / span 2;
+    grid-column-start: 3;
+}
+
+/* 3 */
+.personDiv {
+    grid-column: span 2 / span 2;
+    grid-row-start: 2;
+}
+
+/* 4 */
+.projectDiv {
+    grid-column: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
+
+/* 5 */
+.assignedToDiv {
+    grid-column: span 2 / span 2;
+    grid-row-start: 3;
+}
+
+/* 6 */
+.priorityDiv {
+    grid-column: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 3;
+}
+
+/* 7 */
+.targetDateDiv {
+    grid-column: span 2 / span 2;
+    grid-row-start: 4;
+}
+
+/* 8 */
+.submitDiv {
+    grid-column: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 4;
+}
+
+/* 9 */
+.goBackDiv{
+    grid-column: span 2 / span 2;
+    grid-column-start: 2;
+    grid-row-start: 5;
+}
