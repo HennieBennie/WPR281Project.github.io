@@ -164,30 +164,36 @@ function saveEdit(id) {
     if (!projectName) errors.push("Project Name is required");
 
     // Date validation
-    if (targetDate && entryDate && targetDate < entryDate) {
-        errors.push("Target date cannot be before entry date");
-    }
+    if (targetDate && entryDate) {
+        let tDate = new Date(targetDate);
+        let eDate = new Date(entryDate);
 
+        if (tDate < eDate) {
+            errors.push("Target date cannot be before entry date");
+        }
+    }
     if (errors.length > 0) {
         alert(errors.join("\n"));
         return;
     }
 
-    bug.summary = document.getElementById(`summary-${id}`).value;
-    bug.status = document.getElementById(`status-${id}`).value;
-    bug.description = document.getElementById(`description-${id}`).value;
-    bug.identifiedBy = document.getElementById(`person-${id}`).value;
+    bug.summary = summary;
+    bug.description = description;
+    bug.identifiedBy = identifiedBy;
+    bug.status = status;
+
+    bug.projectID = projectID;
+    bug.projectName = projectName;
+    bug.priority = priority;
+
+    bug.entryDate = entryDate;
+    bug.targetDate = targetDate;
+
     bug.personID = document.getElementById(`personID-${id}`).value;
     bug.personName = document.getElementById(`personName-${id}`).value;
     bug.personSurname = document.getElementById(`personSurname-${id}`).value;
     bug.personEmail = document.getElementById(`personEmail-${id}`).value;
     bug.personUsername = document.getElementById(`personUsername-${id}`).value;
-    bug.projectID= document.getElementById(`projectID-${id}`).value;
-    bug.projectName = document.getElementById(`projectName-${id}`).value;
-    bug.priority = document.getElementById(`priority-${id}`).value;
-    bug.entryDate = document.getElementById(`entryDate-${id}`).value;
-    bug.targetDate = document.getElementById(`targetDate-${id}`).value;
-
     localStorage.setItem("issues", JSON.stringify(issues));
     location.reload();
 };

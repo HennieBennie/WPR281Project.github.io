@@ -219,8 +219,11 @@ function saveBug() {
     if (!targetDate) errors.push("Target Date is required");
 
     // Date validation
-    let today = new Date().toISOString().split("T")[0];
-    if (targetDate < today) {
+    // FIX: proper date comparison
+    let today = new Date();
+    let tDate = new Date(targetDate);
+
+    if (targetDate && tDate < today.setHours(0,0,0,0)) {
         errors.push("Target date cannot be in the past");
     }
 
@@ -238,22 +241,23 @@ function saveBug() {
 
     let newBug = {
         id: newId,
-        summary: document.getElementById("summary").value,
-        description: document.getElementById("description").value,
-        identifiedBy: document.getElementById("person").value,
+        summary,
+        description,
+        identifiedBy,
+        projectID,
+        projectName,
+        priority,
+        status: "open",
+        entryDate: new Date().toISOString(),
+        targetDate,
+        resolutionDate: null,
+        resolutionSummary: "",
+
         personID: document.getElementById("personID").value,
         personName: document.getElementById("personName").value,
         personSurname: document.getElementById("personSurname").value,
         personEmail: document.getElementById("personEmail").value,
-        personUsername: document.getElementById("personUsername").value,
-        projectID: document.getElementById("projectID").value,
-        projectName: document.getElementById("projectName").value,
-        priority: document.getElementById("priority").value,
-        status: "open",
-        entryDate: new Date().toISOString(),
-        targetDate: document.getElementById("targetDate").value,
-        resolutionDate: null,
-        resolutionSummary: ""
+        personUsername: document.getElementById("personUsername").value
     };
     issues.push(newBug);
     localStorage.setItem("issues", JSON.stringify(issues));
