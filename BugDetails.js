@@ -49,6 +49,7 @@ if(bug) {
 function EditDetails(id) {
     let EditContainer = document.getElementById("bugDetails");
     let bug = issues.find(b => b.id === id);
+    if (!bug) return;//returns if there is a null crash
     EditContainer.innerHTML = `
     <div class="editForm">
         <div class="div1">
@@ -127,6 +128,7 @@ function EditDetails(id) {
 function ResolveIssue(id) {
     let resolveContainer = document.getElementById("resolveBug");
     let bug = issues.find(b => b.id === id);
+    if (!bug) return;//returns if there is a null crash
     resolveContainer.innerHTML = `
     <input id="resolveSummary-${id}" placeholder="Resolution summary" value=""><br>
     <input id="resolvedDate-${id}" type="date" value=""><br> 
@@ -156,6 +158,7 @@ function saveEdit(id) {
 };
 function saveResolution(id) {
     let bug = issues.find(b => b.id === id);
+    if (!bug) return;//returns if there is a null crash
     bug.resolutionSummary = document.getElementById(`resolveSummary-${id}`).value;
     bug.resolutionDate = document.getElementById(`resolvedDate-${id}`).value;
     bug.status = "resolved" 
