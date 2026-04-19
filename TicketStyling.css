@@ -49,44 +49,22 @@
     padding: 12px 20px;
 }
     
-.summaryDiv {
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.descriptionDiv {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.personDiv {
-    grid-column: 1;
-    grid-row: 3;
-}
-
-.projectDiv {
-    grid-column: 1;
-    grid-row: 4;
-}
-
-.priorityDiv {
-    grid-column: 1;
-    grid-row: 5;
-}
-
-.targetDateDiv {
-    grid-column: 1;
-    grid-row: 6;
-}
-
-.assignedToDiv {
-    grid-column: 1;
-    grid-row: 7;
-}
-
-.submitDiv {
-    grid-column: 1;
-    grid-row: 8;
+.summaryDiv,
+.descriptionDiv,
+.personDiv,
+.projectDiv,
+.projectNameDiv,
+.priorityDiv,
+.targetDateDiv,
+.personNameDiv,
+.personSurnameDiv,
+.personIDDiv,
+.personEmailDiv,
+.personUsernameDiv,
+.submitDiv,
+.div1, .div2, .div3, .div4, .div5, .div6, .div7, .div8, .div9, .div10, .div11, .div12, .div13, .div14 {
+    display: flex;
+    flex-direction: column;
 }
 
 /* Edit Page Styling */
@@ -110,9 +88,10 @@
     font-weight: 600;
     margin-bottom: 6px;
     color: #333;
-    background: none;
+    background-color: #e9ecef;
     border: none;
-    padding: 0;
+    padding: 8px 12px;
+    border-radius: 6px;
 }
 
 .editForm input,
@@ -146,11 +125,25 @@
 }
 
 .form-label {
+    display: block;
     font-weight: 600;
     margin-bottom: 6px;
     color: #333;
     border: none;
-    background: none;
+    background-color: #e9ecef;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.editForm label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+    border: none;
+    background-color: #e9ecef;
+    padding: 8px 12px;
+    border-radius: 6px;
 }
 
 /* .div1 {

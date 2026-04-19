@@ -22,6 +22,7 @@
         <div class="tab">
             <button class="tablinks" onclick="openTab(event, 'All')" id="defaultOpen">All</button>
             <button class="tablinks" onclick="openTab(event, 'High')">High Priority</button>
+            <button class="tablinks" onclick="openTab(event, 'Medium')">Medium Priority</button>
             <button class="tablinks" onclick="openTab(event, 'Low')">Low Priority</button>
             <button class="tablinks" onclick="openTab(event, 'InProgress')">In Progress</button>
             <button class="tablinks" onclick="openTab(event, 'Resolved')" id="ResolvedTab">Resolved</button>
@@ -29,11 +30,15 @@
 
         <!-- Tab content -->
         <div id="All" class="tabcontent">
-            <div id="bugList"></div>
+            <div id="All"></div>
         </div>
 
         <div id="High" class="tabcontent">
             <div id="High"></div>
+        </div>
+
+        <div id="Medium" class="tabcontent">
+            <div id="Medium"></div>
         </div>
 
         <div id="Low" class="tabcontent">

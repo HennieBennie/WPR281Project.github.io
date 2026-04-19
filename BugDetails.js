@@ -12,35 +12,77 @@ if(bug) {
 
     if (bug.status === "resolved") {
         resolutionHTML = `
-            <h4>Resolution Details</h4>
+            <p class="form-label">Resolution Details:</p>
             <p>Resolved Date: ${bug.resolutionDate}</p>
             <p>Resolution Summary: ${bug.resolutionSummary}</p>
     `;
 }
     container.innerHTML = `
-    <p>Ticket ID:${bug.id}</p>
-    <p>Summary:${bug.summary}</p>
-    <p>Status:${bug.status}</p>
+    <div class="editForm">
+    <div class="div1">
+        <p class="form-label">Ticket ID:</p>
+        <p>${bug.id}</p>
+    </div>
+    <div class="div2">
+        <p class="form-label">Summary:</p>
+        <p>${bug.summary}</p>
+    </div>
+    <div class="div3">
+        <p class="form-label">Status:</p>
+        <p>${bug.status}</p>
+    </div>
     ${resolutionHTML}
-    <p>Description:${bug.description}</p>
-    <p>Identified by:${bug.identifiedBy}</p>
-    <p>Assigned to:</p>
-    <p>${bug.personName}</p>
-    <p>${bug.personSurname}</p>
-    <p>${bug.personID}</p>
-    <p>${bug.personEmail}</p>
-    <p>${bug.personUsername}</p>
-    <p>Project's details:</p>
-    <p>${bug.projectID}</p>
-    <p>${bug.projectName}</p>
-    <p>Date identified:${bug.entryDate}</p>
-    <p>Target date:${bug.targetDate}</p>
+    <div class="div4">
+        <p class="form-label">Description:</p>
+        <p>${bug.description}</p>
+    </div>
+    <div class="div5">
+        <p class="form-label">Identified by:</p>
+        <p>${bug.identifiedBy}</p>
+    </div>
+    <div class="div6">
+        <p class="form-label">Assigned Name:</p>
+        <p>${bug.personName}</p>
+    </div>
+    <div class="div7">
+        <p class="form-label">Assigned Surname:</p>
+        <p>${bug.personSurname}</p>
+    </div>
+    <div class="div8">
+        <p class="form-label">Person ID:</p>
+        <p>${bug.personID}</p>
+    </div>
+    <div class="div9">
+        <p class="form-label">Person Email:</p>
+        <p>${bug.personEmail}</p>
+    </div>
+    <div class="div10">
+        <p class="form-label">Person Username:</p>
+        <p>${bug.personUsername}</p>
+    </div>
+    <div class="div11">
+        <p class="form-label">Project ID:</p>
+        <p>${bug.projectID}</p>
+    </div>
+    <div class="div12">
+        <p class="form-label">Project Name:</p>
+        <p>${bug.projectName}</p>
+    </div>
+    <div class="div13">
+        <p class="form-label">Date identified:</p>
+        <p>${bug.entryDate}</p>
+    </div>
+    <div class="div14">
+        <p class="form-label">Target date:</p>
+        <p>${bug.targetDate}</p>
+    </div>
     <button class="button" onclick="EditDetails(${bug.id})">Edit</button>
     ${
         bug.status !== "resolved"
         ? `<button class="button" onclick="ResolveIssue(${bug.id})">Resolve</button>`
         : ""
     }
+    </div>
         `;
     
     } else {
@@ -78,10 +120,9 @@ function EditDetails(id) {
         </div>
 
         <div class="div5">
-            <p class="form-label">Project details:</p>
-            <p>Project ID:</p>
+            <p class="form-label">Project ID:</p>
             <input id="projectID-${id}" placeholder="project ID" value="${bug.projectID}">
-            <p>Project name:</p>
+            <p class="form-label">Project Name:</p>
             <input id="projectName-${id}" placeholder="project name" value="${bug.projectName}">
         </div>
 
@@ -95,26 +136,25 @@ function EditDetails(id) {
         </div>
 
         <div class="div7">
-            <p class="form-label">Assigned to:</p>
-            <p class="form-label">Name:</p>
+            <p class="form-label">Assigned Name:</p>
             <input id="personName-${id}" placeholder="Name" value="${bug.personName}"><br>
-            <p class="form-label">Surname:</p>
+            <p class="form-label">Assigned Surname:</p>
             <input id="personSurname-${id}" placeholder="Name" value="${bug.personSurname}"><br>
             <p class="form-label">Person ID:</p>
             <input id="personID-${id}" placeholder="Name" value="${bug.personID}"><br>
-            <p class="form-label">Email:</p>
+            <p class="form-label">Person Email:</p>
             <input id="personEmail-${id}" placeholder="Email" value="${bug.personEmail}"><br>
-            <p class="form-label">Username:</p>
+            <p class="form-label">Person Username:</p>
             <input id="personUsername-${id}" placeholder="Username" value="${bug.personUsername}"><br>
         </div>
 
         <div class="div8">
-            <p class="form-label">Entry Date:</p>
+            <p class="form-label">Date identified:</p>
             <input id="entryDate-${id}" type="date" value="${bug.entryDate?.split("T")[0]}"><br>
         </div>
 
         <div class="div9">
-            <p class="form-label" >Target Date:</p>
+            <p class="form-label">Target date:</p>
             <input id="targetDate-${id}" type="date" value="${bug.targetDate?.split("T")[0]}"><br>
         </div>
 

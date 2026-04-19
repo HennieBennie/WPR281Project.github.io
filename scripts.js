@@ -306,12 +306,15 @@ function openTab(evt, tabName) {
 // Display bugs filtered by tab
 function displayBugsSum(tabName) {
     // Determine which container and filter to use
-    let containerId = "bugList";
+    let containerId = "All";
     let filterFn = (bug) => !bug.status || bug.status.toLowerCase() !== "resolved"; // Default: show all (excluding resolved)
 
     if (tabName === "High") {
         containerId = "High";
         filterFn = (bug) => bug.priority && bug.priority.toLowerCase() === "high" && (!bug.status || bug.status.toLowerCase() !== "resolved");
+    } else if (tabName === "Medium") {
+        containerId = "Medium";
+        filterFn = (bug) => bug.priority && bug.priority.toLowerCase() === "medium" && (!bug.status || bug.status.toLowerCase() !== "resolved");
     } else if (tabName === "Low") {
         containerId = "Low";
         filterFn = (bug) => bug.priority && bug.priority.toLowerCase() === "low" && (!bug.status || bug.status.toLowerCase() !== "resolved");
