@@ -1,63 +1,262 @@
 .Form {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(9, auto);
+    gap: 20px;
+    background-color: #f8f9fa;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 1200px;
+    margin: 20px auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.Form input,
+.Form textarea,
+.Form select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.Form input:focus,
+.Form textarea:focus,
+.Form select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.Form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.Form .button {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
 }
     
-/* 1 */
 .summaryDiv {
-    grid-column: span 2 / span 2;
+    grid-column: 1;
+    grid-row: 1;
 }
 
-/* 2 */
 .descriptionDiv {
-    grid-column: span 2 / span 2;
-    grid-column-start: 3;
+    grid-column: 1;
+    grid-row: 2;
 }
 
-/* 3 */
 .personDiv {
-    grid-column: span 2 / span 2;
-    grid-row-start: 2;
+    grid-column: 1;
+    grid-row: 3;
 }
 
-/* 4 */
 .projectDiv {
-    grid-column: span 2 / span 2;
-    grid-column-start: 3;
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.priorityDiv {
+    grid-column: 1;
+    grid-row: 5;
+}
+
+.targetDateDiv {
+    grid-column: 1;
+    grid-row: 6;
+}
+
+.assignedToDiv {
+    grid-column: 1;
+    grid-row: 7;
+}
+
+.submitDiv {
+    grid-column: 1;
+    grid-row: 8;
+}
+
+/* Edit Page Styling */
+
+.editForm {
+    display: flex;
+    flex-direction: column;
+    /* display: grid; */
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* grid-template-rows: repeat(8, 1fr); */
+    gap: 12px;
+    background-color: #f8f9fa;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 1200px;
+    margin: 20px auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.editForm p {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.editForm input,
+.editForm select,
+.editForm textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.editForm input:focus,
+.editForm select:focus,
+.editForm textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.editForm textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.editForm .button {
+    padding: 12px 20px;
+}
+
+.form-label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+    border: none;
+    background: none;
+}
+
+/* .div1 {
+    grid-column-start: 2;
+    grid-row-start: 1;
+}
+
+.div2 {
+    grid-column-start: 2;
     grid-row-start: 2;
 }
 
-/* 5 */
-.assignedToDiv {
-    grid-column: span 2 / span 2;
+.div3 {
+    grid-column-start: 2;
     grid-row-start: 3;
 }
 
-/* 6 */
-.priorityDiv {
-    grid-column: span 2 / span 2;
-    grid-column-start: 3;
-    grid-row-start: 3;
-}
-
-/* 7 */
-.targetDateDiv {
-    grid-column: span 2 / span 2;
+.div4 {
+    grid-column-start: 2;
     grid-row-start: 4;
 }
 
-/* 8 */
-.submitDiv {
-    grid-column: span 2 / span 2;
-    grid-column-start: 3;
-    grid-row-start: 4;
-}
-
-/* 9 */
-.goBackDiv{
-    grid-column: span 2 / span 2;
+.div5 {
     grid-column-start: 2;
     grid-row-start: 5;
+}
+
+.div6 {
+    grid-column-start: 2;
+    grid-row-start: 6;
+}
+
+.div7 {
+    grid-row: span 6 / span 6;
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+.div8 {
+    grid-row-start: 7;
+}
+
+.div9 {
+    grid-row-start: 7;
+}
+
+.div10 {
+    grid-column: span 2 / span 2;
+    grid-row-start: 8;
+} */
+      
+
+/* Bug Details Display */
+#bugDetails {
+    display: block;
+    background-color: #f8f9fa;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 1200px;
+    margin: 20px auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#bugDetails p {
+    margin: 12px 0;
+    padding: 8px 12px;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    color: #333;
+}
+
+#bugDetails p strong {
+    color: #2563eb;
+    display: inline-block;
+    min-width: 140px;
+}
+
+#bugDetails .button {
+    margin: 10px 10px 0 0;
+    display: inline-block;
+}
+
+/* Resolve Form */
+#resolveBug {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#resolveBug input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+#resolveBug .button {
+    margin-top: 10px;
 }

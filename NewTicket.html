@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create New Ticket</title>
     <link rel="stylesheet" href="styling.css">
     <link rel="stylesheet" href="TicketStyling.css">
     <script src="scripts.js" defer></script>
 </head>
 <body>
     <div class="Header">
-        <h3>Create New Ticket</h3>
-        <button id="backButton" class="button" onclick="history.back()">Go Back</button>
+        <div class="HeaderTitle">
+            <h3>Create New Ticket</h3>
+        </div>
+        <button id="backButton" class="button" onclick="window.location.href='index.html'">Go Back</button>
     </div> 
     <div>
         <form id="newTicketForm" class="Form">
@@ -28,12 +30,12 @@
                 <input type="text" id="person" required>
             </div>
             <div class="projectDiv">
-                <label for="project">Project:</label>
-                <input type="text" id="project" required>
+                <label for="projectID">Project ID:</label>
+                <input type="text" id="projectID" required>
             </div>
-            <div class="assignedToDiv">
-                <label for="assignedTo">Assigned To:</label>
-                <input type="text" id="assignedTo" required>
+            <div class="projectNameDiv">
+                <label for="projectName">Project Name:</label>
+                <input type="text" id="projectName" required>
             </div>
             <div class="priorityDiv">
                 <label for="priority">Priority:</label>
@@ -46,6 +48,26 @@
             <div class="targetDateDiv">
                 <label for="targetDate">Target Date:</label>
                 <input type="date" id="targetDate" required>
+            </div>
+            <div class="personNameDiv">
+                <label for="personName">Assigned Name:</label>
+                <input type="text" id="personName" required>
+            </div>
+            <div class="personSurnameDiv">
+                <label for="personSurname">Assigned Surname:</label>
+                <input type="text" id="personSurname" required>
+            </div>
+            <div class="personIDDiv">
+                <label for="personID">Person ID:</label>
+                <input type="text" id="personID" required>
+            </div>
+            <div class="personEmailDiv">
+                <label for="personEmail">Person Email:</label>
+                <input type="email" id="personEmail" required>
+            </div>
+            <div class="personUsernameDiv">
+                <label for="personUsername">Person Username:</label>
+                <input type="text" id="personUsername" required>
             </div>
             <div class="submitDiv">
                 <button type="submit" class="button" onclick="saveBug()">Create Ticket</button>
