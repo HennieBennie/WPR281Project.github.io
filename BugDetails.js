@@ -138,6 +138,41 @@ function ResolveIssue(id) {
 };
 function saveEdit(id) {
     let bug = issues.find(b => b.id === id);
+     if (!bug) return;
+
+    let summary = document.getElementById(`summary-${id}`).value.trim();
+    let description = document.getElementById(`description-${id}`).value.trim();
+    let identifiedBy = document.getElementById(`person-${id}`).value.trim();
+    let status = document.getElementById(`status-${id}`).value;
+
+    let projectID = document.getElementById(`projectID-${id}`).value.trim();
+    let projectName = document.getElementById(`projectName-${id}`).value.trim();
+
+    let priority = document.getElementById(`priority-${id}`).value;
+
+
+    let entryDate = document.getElementById(`entryDate-${id}`).value;
+    let targetDate = document.getElementById(`targetDate-${id}`).value;
+
+    let errors = [];
+
+    if (!summary) errors.push("Summary is required");
+    if (!description) errors.push("Description is required");
+    if (!identifiedBy) errors.push("Identified By is required");
+
+    if (!projectID) errors.push("Project ID is required");
+    if (!projectName) errors.push("Project Name is required");
+
+    // Date validation
+    if (targetDate && entryDate && targetDate < entryDate) {
+        errors.push("Target date cannot be before entry date");
+    }
+
+    if (errors.length > 0) {
+        alert(errors.join("\n"));
+        return;
+    }
+
     bug.summary = document.getElementById(`summary-${id}`).value;
     bug.status = document.getElementById(`status-${id}`).value;
     bug.description = document.getElementById(`description-${id}`).value;

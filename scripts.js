@@ -199,6 +199,37 @@ if (issues.length === 0) {
 
 //save info to ticket
 function saveBug() {
+    // Get values
+    let summary = document.getElementById("summary").value.trim();
+    let description = document.getElementById("description").value.trim();
+    let identifiedBy = document.getElementById("person").value.trim();
+    let projectID = document.getElementById("projectID").value.trim();
+    let projectName = document.getElementById("projectName").value.trim();
+    let priority = document.getElementById("priority").value;
+    let targetDate = document.getElementById("targetDate").value;
+
+    // Validation
+    let errors = [];
+
+    if (!summary) errors.push("Summary is required");
+    if (!description) errors.push("Description is required");
+    if (!identifiedBy) errors.push("Identified By is required");
+    if (!projectID) errors.push("Project ID is required");
+    if (!projectName) errors.push("Project Name is required");
+    if (!targetDate) errors.push("Target Date is required");
+
+    // Date validation
+    let today = new Date().toISOString().split("T")[0];
+    if (targetDate < today) {
+        errors.push("Target date cannot be in the past");
+    }
+
+    // If errors exist → stop
+    if (errors.length > 0) {
+        alert(errors.join("\n"));
+        return;
+    }
+
     // Generate a new ID based on the highest existing ID
     let newId = 1;
     if (issues.length > 0) {
