@@ -6,10 +6,18 @@ function login() {
     const adminUsername = "admin";
     const adminPassword = "admin";
 
-    if (username === adminUsername && password === adminPassword) {
+    if (username.toLowerCase() === adminUsername && password === adminPassword) {
         // Optional: mark user as logged in
         localStorage.setItem("isLoggedIn", "true");
 
         window.location.href = "index.html";
     }
+    else {
+        alert("Invalid username or password. Please try again.");
+    } 
+}
+
+function logout() {
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "login.html";
 }

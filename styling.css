@@ -9,12 +9,76 @@
         border-bottom: 2px solid #ccc;
     }
 
+
+    .headerButtons {
+        display: flex;
+        gap: 12px;
+    }
+
     .HeaderTitle h1 {
         margin: 0;
         font-size: 24px;
     }
 
-    /* Animations */
+    /* Reset some default styles */
+    .loginBody {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Login container */
+    .login {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        width: 300px;
+        text-align: center;
+    }
+
+    .loginHeader {
+        margin-bottom: 20px;
+        color: #333333;
+    }
+
+    .loginFields {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .loginFields label {
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #555555;
+    }
+
+    .loginFields input {
+        width: 90%;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .loginButton {
+        margin: 0 auto;
+        display: block;
+        color: #ffffff;
+        border: none;
+        padding: 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 15px;
+    }
 
 
 /* Styling for the tab group */
