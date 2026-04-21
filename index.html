@@ -3,10 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>WPR 281 Project</title>
+    <link rel="stylesheet" href="styling.css">
+    <script src="scripts.js" defer></script>
+    <script src="login.js" defer></script>
 </head>
 <body>
-    Hello World!<br>
-    Gavin stinksd'opfiopjngas[dofihgsdoipugbasdp9oguib]
+
+    <div class="Header">
+        <div class="HeaderTitle">
+            <h1>WPR 281 Project</h1>
+        </div>
+        <div class="headerButtons">
+            <div>
+                <button class="button" onclick="logout()">Log Out</button>
+            </div>
+            <div>
+                <button class="button" onclick="window.location.href='NewTicket.html'">Create New Ticket</button>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'All')" id="defaultOpen">All</button>
+            <button class="tablinks" onclick="openTab(event, 'High')">High Priority</button>
+            <button class="tablinks" onclick="openTab(event, 'Medium')">Medium Priority</button>
+            <button class="tablinks" onclick="openTab(event, 'Low')">Low Priority</button>
+            <button class="tablinks" onclick="openTab(event, 'InProgress')">In Progress</button>
+            <button class="tablinks" onclick="openTab(event, 'Resolved')" id="ResolvedTab">Resolved</button>
+        </div>
+
+        <!-- Tab content -->
+        <div id="All" class="tabcontent">
+            <div id="All"></div>
+        </div>
+
+        <div id="High" class="tabcontent">
+            <div id="High"></div>
+        </div>
+
+        <div id="Medium" class="tabcontent">
+            <div id="Medium"></div>
+        </div>
+
+        <div id="Low" class="tabcontent">
+            <div id="Low"></div>
+        </div> 
+
+        <div id="InProgress" class="tabcontent">
+            <div id="InProgress"></div>
+        </div>  
+
+        <div id="Resolved"  class="tabcontent">
+            <div id="Resolved"></div>
+        </div>  
+    </div>
+
 </body>
 </html>

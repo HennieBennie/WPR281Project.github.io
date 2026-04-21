@@ -1,1 +1,252 @@
+/* Styling for the header group */
 
+    .Header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border-bottom: 2px solid #ccc;
+    }
+
+
+    .headerButtons {
+        display: flex;
+        gap: 12px;
+    }
+
+    .HeaderTitle h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    /* Reset some default styles */
+    .loginBody {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Login container */
+    .login {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        width: 300px;
+        text-align: center;
+    }
+
+    .loginHeader {
+        margin-bottom: 20px;
+        color: #333333;
+    }
+
+    .loginFields {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .loginFields label {
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #555555;
+    }
+
+    .loginFields input {
+        width: 90%;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+
+/* Styling for the tab group */
+
+    .tabgrid {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        border-radius: 16px;
+        /* gap: 8px; */
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-top: none;
+        padding: 10px 12px;
+        border: 4px solid #d7d9ee;
+    }
+
+    #All, #High, #Medium, #Low, #InProgress, #Resolved {
+        display: grid;
+        background-color: #d7d9ee;  
+        border-radius: 0 0 12px 12px;
+        border: 1px solid #e0e0e0;
+        padding: 8px;
+        margin: 0;
+        gap: 6px;
+    }
+
+    #All .tabgrid, #High .tabgrid, #Medium .tabgrid, #Low .tabgrid, #InProgress .tabgrid, #Resolved .tabgrid {
+        margin: 0;
+    }
+
+    .tabcontent {
+        display: none;
+        margin: 0;
+        padding: 0;
+        border-top: none;
+        animation: fadeEffect 0.6s;
+    }
+
+    .tabcontent.active {
+        display: block;
+    }
+
+    .hasBorder {
+        border-right: 2px solid #cccccc;
+        padding-left: 1vw;
+    }
+
+    .button {
+        cursor: pointer;
+        font-weight: 700;
+        transition: all 0.2s;
+        padding: 8px 16px;
+        border-radius: 16px;
+        background: #2563eb;
+        color: white;
+        border: 1px solid transparent;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        align-self: flex-start;
+        align-items: center;
+    }
+
+    .centered {
+        margin: 0 auto;
+        display: block;
+    }
+
+    .button:hover {
+        background: #1d4ed8;
+        transform: scale(1.02);
+    }
+
+    .tab {
+        overflow: hidden;
+        border-bottom: 2px solid #ccc;
+        padding: 36px 0 0 0;
+        display: flex;
+    }
+
+    .tab button {
+        background-color: #ebebff;
+        border-radius: 12px 12px 0 0;
+        border: 1px solid #ccc;
+        outline: none;
+        cursor: pointer;
+        padding: 12px 20px 12px 20px;
+        transition: background-color 0.3s;
+        font-size: 16px;
+    }
+
+    #ResolvedTab {
+        margin-left: auto;  
+    }
+
+    .tab button:hover {
+        background-color: #aaaaff;
+    }
+
+    .tab button.active {
+        background-color: #1d4ed8;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Animations */
+    @keyframes fadeEffect {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    /* Dropdown styling */
+    .priorityDiv {
+        display: flex;
+        align-items: center;
+        padding: 6px 16px;
+    }
+
+    .statusDiv {
+        display: flex;
+        align-items: center;
+        padding: 6px 16px;
+    }
+
+    select {
+        padding: 6px 16px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    select option {
+        background-color: #fff;
+        color: #333;
+    }
+
+    select:hover {
+        border-color: #888;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    select:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 2px rgba(37,99,235,0.3);
+    }
+
+    /* Priority colors */
+    .priority-low {
+        background-color: #d4edda;
+        color: #155724;
+    }
+    .priority-medium {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+    .priority-high {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    /* Status colors */
+    .status-open {
+        background-color: #cce5ff;
+        color: #004085;
+    }
+    .status-inprogress {
+        background-color: #e2e3e5;
+        color: #383d41;
+    }
+    .status-resolved {
+        background-color: #d4edda;
+        color: #155724;
+    }
+    .status-overdue {
+        background-color: #f5c6cb;
+        color: #721c24;
+    }
