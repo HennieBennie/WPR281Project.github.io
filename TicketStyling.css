@@ -75,6 +75,31 @@
 
 .editForm {
     display: grid;
+    grid-template-columns: repeat(3, 1fr); /* two neat columns */
+    gap: 20px;
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 1000px;
+    margin: 20px auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.editForm .summaryDiv,
+.editForm .descriptionDiv {
+    grid-column: span 3;
+}
+
+.editForm .submitDiv {
+    grid-column: span 3;
+    display: flex;
+    justify-content: center;
+}
+
+/* ticket forms styling */
+
+.ticketForm {
+    display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 neat columns */
     gap: 20px; /* spacing between fields */
     background-color: #f8f9fa;
@@ -85,7 +110,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.editForm select {
+.ticketForm select {
     width: 100%;              /* full width like inputs */
     min-width: 200px;         /* ensures it doesn’t collapse */
     padding: 8px 12px;
@@ -98,7 +123,7 @@
 
 
 
-.editForm p {
+.ticketForm p {
     font-weight: 600;
     margin-bottom: 6px;
     color: #333;
@@ -108,9 +133,9 @@
     border-radius: 6px;
 }
 
-.editForm input,
-.editForm select,
-.editForm textarea {
+.ticketForm input,
+.ticketForm select,
+.ticketForm textarea {
     width: 100%;
     padding: 8px 12px;
     border: 1px solid #ccc;
@@ -121,20 +146,20 @@
     box-sizing: border-box;
 }
 
-.editForm input:focus,
-.editForm select:focus,
-.editForm textarea:focus {
+.ticketForm input:focus,
+.ticketForm select:focus,
+.ticketForm textarea:focus {
     outline: none;
     border-color: #2563eb;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-.editForm textarea {
+.ticketForm textarea {
     min-height: 80px;
     resize: vertical;
 }
 
-.editForm .button {
+.ticketForm .button {
     padding: 12px 20px;
 }
 
@@ -149,7 +174,7 @@
     border-radius: 6px;
 }
 
-.editForm label {
+.ticketForm label {
     display: block;
     font-weight: 600;
     margin-bottom: 6px;
