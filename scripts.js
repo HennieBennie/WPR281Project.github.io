@@ -318,6 +318,24 @@ function openTab(evt, tabName) {
     displayBugsSum(tabName);
 }
 
+function updateOverdueStatuses() {
+    let today = new Date();
+    issues.forEach(bug => {
+        if (bug.targetDate) {
+            let tDate = new Date(bug.targetDate);
+
+            if (
+                tDate < today.setHours(0,0,0,0) &&
+                bug.status.toLowerCase() !== "resolved"
+            ) {
+                bug.status = "overdue";
+            }
+        }
+    });
+    localStorage.setItem("issues", JSON.stringify(issues));
+}
+
+
 // Display bugs filtered by tab
 function displayBugsSum(tabName) {
     // Determine which container and filter to use
@@ -387,6 +405,10 @@ function displayBugsSum(tabName) {
                     <option value="open" ${bug.status.toLowerCase() === "open" ? "selected" : ""}>Open</option>
                     <option value="in progress" ${bug.status.toLowerCase() === "in progress" ? "selected" : ""}>In Progress</option>
                     <option value="overdue" ${bug.status.toLowerCase() === "overdue" ? "selected" : ""}>Overdue</option>
+                    <option value="resolved" ${bug.status.toLowerCase() === "resolved" 
+                            ? '<option value="resolved" selected>Resolved</option>' 
+                            : '<option value="resolved" style="display:none;">Resolved</option>'}}>Resolved
+                    </option>
                 </select>
             </div>
 
@@ -397,7 +419,6 @@ function displayBugsSum(tabName) {
             <div class="centered">
                 <button class="button" onclick="displayDetail(${bug.id})">View Bug</button>
             </div>
-
         </div>`;
         container.appendChild(ticket);
     });
@@ -405,6 +426,7 @@ function displayBugsSum(tabName) {
 
 
 window.onload = function () {
+    updateOverdueStatuses();
     displayBugsSum("All");
     document.getElementById("defaultOpen").click();
 };
