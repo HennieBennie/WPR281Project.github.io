@@ -17,6 +17,18 @@
     </div> 
     <div>
         <form id="newTicketForm" class="editForm">
+            <div class="personIDDiv">
+                <label for="personID">Person ID:</label>
+                <input type="text" id="personID" required>
+            </div>
+            <div class="personEmailDiv">
+                <label for="personEmail">Person Email:</label>
+                <input type="email" id="personEmail" required>
+            </div>
+            <div class="personUsernameDiv">
+                <label for="personUsername">Person Username:</label>
+                <input type="text" id="personUsername" required>
+            </div>
             <div class="summaryDiv">
                 <label for="summary">Summary:</label>
                 <input type="text" id="summary" required>
@@ -56,19 +68,7 @@
             <div class="personSurnameDiv">
                 <label for="personSurname">Assigned Surname:</label>
                 <input type="text" id="personSurname" required>
-            </div>
-            <div class="personIDDiv">
-                <label for="personID">Person ID:</label>
-                <input type="text" id="personID" required>
-            </div>
-            <div class="personEmailDiv">
-                <label for="personEmail">Person Email:</label>
-                <input type="email" id="personEmail" required>
-            </div>
-            <div class="personUsernameDiv">
-                <label for="personUsername">Person Username:</label>
-                <input type="text" id="personUsername" required>
-            </div>
+            </div>            
             <div class="submitDiv">
                 <button type="submit" class="button" onclick="saveBug()">Create Ticket</button>
             </div>

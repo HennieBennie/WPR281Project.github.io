@@ -60,22 +60,23 @@
 .personSurnameDiv,
 .personIDDiv,
 .personEmailDiv,
-.personUsernameDiv,
-.submitDiv,
-.div1, .div2, .div3, .div4, .div5, .div6, .div7, .div8, .div9, .div10, .div11, .div12, .div13, .div14 {
+.personUsernameDiv {
     display: flex;
     flex-direction: column;
+}
+
+.submitDiv {
+    grid-column: span 3; /* makes the button stretch across all columns */
+    display: flex;
+    justify-content: center;
 }
 
 /* Edit Page Styling */
 
 .editForm {
-    display: flex;
-    flex-direction: column;
-    /* display: grid; */
-    /* grid-template-columns: repeat(2, 1fr); */
-    /* grid-template-rows: repeat(8, 1fr); */
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 neat columns */
+    gap: 20px; /* spacing between fields */
     background-color: #f8f9fa;
     padding: 40px;
     border-radius: 12px;
@@ -83,6 +84,19 @@
     margin: 20px auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
+.editForm select {
+    width: 100%;              /* full width like inputs */
+    min-width: 200px;         /* ensures it doesn’t collapse */
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+
 
 .editForm p {
     font-weight: 600;
@@ -144,57 +158,7 @@
     background-color: #e9ecef;
     padding: 8px 12px;
     border-radius: 6px;
-}
-
-/* .div1 {
-    grid-column-start: 2;
-    grid-row-start: 1;
-}
-
-.div2 {
-    grid-column-start: 2;
-    grid-row-start: 2;
-}
-
-.div3 {
-    grid-column-start: 2;
-    grid-row-start: 3;
-}
-
-.div4 {
-    grid-column-start: 2;
-    grid-row-start: 4;
-}
-
-.div5 {
-    grid-column-start: 2;
-    grid-row-start: 5;
-}
-
-.div6 {
-    grid-column-start: 2;
-    grid-row-start: 6;
-}
-
-.div7 {
-    grid-row: span 6 / span 6;
-    grid-column-start: 1;
-    grid-row-start: 1;
-}
-
-.div8 {
-    grid-row-start: 7;
-}
-
-.div9 {
-    grid-row-start: 7;
-}
-
-.div10 {
-    grid-column: span 2 / span 2;
-    grid-row-start: 8;
-} */
-      
+}  
 
 /* Bug Details Display */
 #bugDetails {
