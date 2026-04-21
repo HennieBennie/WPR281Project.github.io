@@ -76,40 +76,42 @@ if(bug) {
         <p class="form-label">Target date:</p>
         <p>${bug.targetDate}</p>
     </div>
-    <button class="button" onclick="EditDetails(${bug.id})">Edit</button>
-    ${
-        bug.status !== "resolved"
-        ? `<button class="button" onclick="ResolveIssue(${bug.id})">Resolve</button>`
-        : ""
-    }
+    <div class="submitDiv">
+        <button class="button" onclick="EditDetails(${bug.id})">Edit</button>
+        ${
+            bug.status !== "resolved"
+            ? `<button class="button" onclick="ResolveIssue(${bug.id})">Resolve</button>`
+            : ""
+        }
     </div>
         `;
     
     } else {
         container.innerHTML = "<p>Bug not found</p>";
     };
+
 function EditDetails(id) {
     let EditContainer = document.getElementById("bugDetails");
     let bug = issues.find(b => b.id === id);
     if (!bug) return;//returns if there is a null crash
     EditContainer.innerHTML = `
     <div class="editForm">
-        <div class="div1">
+        <div>
             <p class="form-label">Summary:</p>
             <input id="summary-${id}" placeholder="summary" value="${bug.summary}">
         </div>
 
-        <div class="div2">
+        <div>
             <p class="form-label">Description:</p>
             <textarea id="description-${id}" placeholder="description">${bug.description}</textarea>
         </div>
 
-        <div class="div3">
+        <div>
             <p class="form-label">Identified by:</p>
             <input id="person-${id}" placeholder="Identified by" value="${bug.identifiedBy}"><br>
         </div>
 
-        <div class="div4">
+        <div>
             <p class="form-label">Status:</p>
             <select id="status-${id}">
                 <option value="open">Open</option>
@@ -117,16 +119,6 @@ function EditDetails(id) {
                 <option value="resolved">Resolved</option>
                 <option value="overdue">Overdue</option>
             </select>
-        </div>
-
-        <div class="div5">
-            <p class="form-label">Project ID:</p>
-            <input id="projectID-${id}" placeholder="project ID" value="${bug.projectID}">
-            <p class="form-label">Project Name:</p>
-            <input id="projectName-${id}" placeholder="project name" value="${bug.projectName}">
-        </div>
-
-        <div class="div6">
             <p class="form-label">Priority:</p>
             <select id="priority-${id}">
                 <option value="low" ${bug.priority === "low" ? "selected" : ""}>Low</option>
@@ -135,36 +127,51 @@ function EditDetails(id) {
             </select>
         </div>
 
-        <div class="div7">
+        <div>
+            <p class="form-label">Project ID:</p>
+            <input id="projectID-${id}" placeholder="project ID" value="${bug.projectID}">
+            <p class="form-label">Project Name:</p>
+            <input id="projectName-${id}" placeholder="project name" value="${bug.projectName}">
+        </div>
+
+        <div>
             <p class="form-label">Assigned Name:</p>
             <input id="personName-${id}" placeholder="Name" value="${bug.personName}"><br>
             <p class="form-label">Assigned Surname:</p>
             <input id="personSurname-${id}" placeholder="Name" value="${bug.personSurname}"><br>
+        </div>
+        <div>
             <p class="form-label">Person ID:</p>
             <input id="personID-${id}" placeholder="Name" value="${bug.personID}"><br>
+        </div>
+        <div>
             <p class="form-label">Person Email:</p>
             <input id="personEmail-${id}" placeholder="Email" value="${bug.personEmail}"><br>
+        </div>
+
+        <div>
             <p class="form-label">Person Username:</p>
             <input id="personUsername-${id}" placeholder="Username" value="${bug.personUsername}"><br>
         </div>
 
-        <div class="div8">
+        <div>
             <p class="form-label">Date identified:</p>
             <input id="entryDate-${id}" type="date" value="${bug.entryDate?.split("T")[0]}"><br>
         </div>
 
-        <div class="div9">
+        <div>
             <p class="form-label">Target date:</p>
             <input id="targetDate-${id}" type="date" value="${bug.targetDate?.split("T")[0]}"><br>
         </div>
 
-        <div class="div10">
+        <div class="submitDiv">
             <button class="button" onclick="saveEdit(${id})">Save</button>
         </div>
     </div>
     `;  
     
 };
+
 function ResolveIssue(id) {
     let resolveContainer = document.getElementById("resolveBug");
     let bug = issues.find(b => b.id === id);
